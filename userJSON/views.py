@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from .models import Usuario
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
+# NO SÉ PORQUÉ, PERO EN POST ME DA ERROR EN POSTMAN
 def listar_usuarios(request):
     usuarios = Usuario.objects.values()
     return JsonResponse({'usuarios': list(usuarios)})
@@ -13,14 +13,12 @@ def listar_usuarios(request):
 @csrf_exempt
 def crear_usuario(request):
     try:
-        # Asegúrate de recibir los datos adecuados desde la solicitud
         data = json.loads(request.body)
         nickname = data.get('nickname')
         clave = data.get('clave')
 
-        # Crea el usuario
         Usuario.objects.create(nickname=nickname, clave=clave)
-
+        #Usuario.save() ME DA ERROR.
         
         return JsonResponse({'mensaje': 'Usuario creado correctamente'})
     except Exception as e:
