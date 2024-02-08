@@ -3,8 +3,11 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Usuario
 from django.views.decorators.csrf import csrf_exempt
+import pdb
 
 # NO SÉ PORQUÉ, PERO EN POST ME DA ERROR EN POSTMAN
+#@csrf_exempt
+pdb.setrace
 def listar_usuarios(request):
     usuarios = Usuario.objects.values()
     return JsonResponse({'usuarios': list(usuarios)})
