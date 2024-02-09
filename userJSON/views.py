@@ -8,12 +8,12 @@ import pdb
 # NO SÉ PORQUÉ, PERO EN POST ME DA ERROR EN POSTMAN
 #@csrf_exempt
 def listar_usuarios(request):
-    pdb.set_trace()
+    #pdb.set_trace()
     usuarios = Usuario.objects.all()
-    #Esta variable usuarios la creamos diciendo que seleccione todos los usuarios ya creados.
     
-    usuarios_datos = [{'id': 'usuario.id', 'nickname': 'usuario.nickname'} for usuario in usuarios]
-    return JsonResponse({'usuarios', usuarios_datos})
+    #Esta variable usuarios la creamos diciendo que seleccione todos los usuarios ya creados.
+    usuarios_datos = [{'id': usuario.id, 'nickname': usuario.nickname} for usuario in usuarios]
+    return JsonResponse({'usuarios': usuarios_datos})
     #Creamos otra variable llamada usuarios_datos para que solo seleccione la id y el nickname del usuario
     #creo que es más conveniente si al final va a ser una petición GET para por ejemplo saber el ID de
     #algún usuario para editar su contraseña o borrarlo
