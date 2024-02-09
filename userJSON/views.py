@@ -10,8 +10,8 @@ import pdb
 def listar_usuarios(request):
     pdb.set_trace()
     usuarios = Usuario.objects.all()
-    
     #Esta variable usuarios la creamos diciendo que seleccione todos los usuarios ya creados.
+    
     usuarios_datos = [{'id': 'usuario.id', 'nickname': 'usuario.nickname'} for usuario in usuarios]
     return JsonResponse({'usuarios', usuarios_datos})
     #Creamos otra variable llamada usuarios_datos para que solo seleccione la id y el nickname del usuario
